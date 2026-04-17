@@ -3,6 +3,7 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import heroImg from "./assets/hero.png";
 import "./App.css";
+import { Route, Routes, Link, BrowserRouter } from "react-router";
 function JobOffer({ title, company, type, stack, desc }) {
   const [modal, setModal] = useState(false);
   return (
@@ -25,7 +26,7 @@ function JobOffer({ title, company, type, stack, desc }) {
     </>
   );
 }
-function App() {
+function JobBoard() {
   const [filter, setFilter] = useState("all");
   const jobs = [
     {
@@ -55,9 +56,9 @@ function App() {
   ];
   const filteredJobs =
     filter === "all" ? jobs : jobs.filter((job) => job.type === filter);
+
   return (
     <>
-      <header>Job For Whites</header>
       <section>
         <button
           onClick={() => setFilter("Remote")}
@@ -73,6 +74,25 @@ function App() {
           <JobOffer key={job.id} {...job} />
         ))}
       </main>
+    </>
+  );
+}
+function App() {
+  return (
+    <>
+      <BrowserRouter>
+        <header>Job For Whites</header>
+        <nav>
+          <Link to="/">Strona główna</Link>
+          <Link to="/add">Dodaj oferte</Link>
+          <Link to="/contact">Kontakt</Link>
+        </nav>
+        <Routes>
+          <Route path="/" element={<JobBoard />} />
+          <Route path="/add" element={<h1>Dodaj</h1>} />
+          <Route path="/contact" element={<h1>Kontakt</h1>} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
