@@ -226,3 +226,16 @@ main .hi:hover {
   border-radius: 25px;
   padding: 50px;
 }
+.form-group
+{
+  width: 70%;
+  margin: 0 auto;
+}
+ .form-group input,  .form-group select,.form-group  button
+{
+  margin: 2rem 0;
+}
+ .form-group button
+{
+  width: 100%;
+}
