@@ -81,7 +81,7 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <header>Job For Whites</header>
+        <header>Job For </header>
         <nav>
           <Link to="/">Strona główna</Link>
           <Link to="/add">Dodaj oferte</Link>
