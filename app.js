@@ -8,17 +8,17 @@ app.use(cors());
 app.get("/stats", async (req, res) => {
   try {
     const cpu = await system.currentLoad();
-    const ram = await system.mem();
+    const mem = await system.mem();
 
     res.json({
-      cpu: cpu.currentLoad(),
-      ram: (ram.mem / 1024 / 1024 / 1024).toFixed(2),
+      cpu: cpu.currentLoad.toFixed(2),
+      ram: (mem.used / 1024 / 1024 / 1024).toFixed(2),
     });
-  } catch (err) {
-    res.json({ erorr: err });
+  } catch (error) {
+    res.status(500).json({ error: error });
   }
 });
 
 app.listen(3000, () => {
-  console.log("Serwer uruchomiony");
+  console.log("Dziaua");
 });
